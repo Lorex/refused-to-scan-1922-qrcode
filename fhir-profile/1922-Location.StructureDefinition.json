@@ -1,0 +1,109 @@
+{
+  "resourceType": "StructureDefinition",
+  "language": "zh-TW",
+  "url": "http://hapi.fhir.org/baseR4/StructureDefinition/1922-Location",
+  "version": "0.0.1",
+  "name": "Location_1922",
+  "title": "Location",
+  "status": "draft",
+  "date": "2022-03-20",
+  "publisher": "Lorex",
+  "contact": [
+    {
+      "name": "Mail",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "hello@lorex.tw",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "用於登記 1922 場所資料與代碼的 Location Resource",
+  "purpose": "用於登記 1922 場所資料與代碼的 Location Resource",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Location",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Location",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Location",
+        "path": "Location",
+        "short": "實聯制場所位置描述",
+        "definition": "這個 Location_1922 Profile 說明本 IG 如何進一步定義 FHIR 的 Location Resource 以呈現位置資訊，這是用來描述實聯制的場所。"
+      },
+      {
+        "id": "Location.identifier",
+        "path": "Location.identifier",
+        "short": "唯一識別碼（場所代碼）",
+        "definition": "這個場所的唯一識別碼，即 1922 實聯制的場所代碼。",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Location.identifier.use",
+        "path": "Location.identifier.use",
+        "short": "official",
+        "definition": "唯一識別碼類別，因為場所代碼為實聯制中使用的正式代碼，在此處必須為 official。",
+        "min": 1,
+        "fixedCode": "official"
+      },
+      {
+        "id": "Location.identifier.system",
+        "path": "Location.identifier.system",
+        "short": "實聯制場所代碼使用的編碼系統",
+        "definition": "實聯制場所代碼使用的編碼系統，在此為衛生福利部官網。",
+        "min": 1,
+        "fixedUri": "https://www.mohw.gov.tw"
+      },
+      {
+        "id": "Location.identifier.value",
+        "path": "Location.identifier.value",
+        "short": "唯一識別碼（場所代碼）",
+        "definition": "這個場所的唯一識別碼，即場所代碼。",
+        "min": 1
+      },
+      {
+        "id": "Location.status",
+        "path": "Location.status",
+        "definition": "此位置是否仍在使用中；應填入LocationStatus代碼表中的其中一個代碼。",
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "description": "此位置是否仍在使用中；應填入LocationStatus代碼表中的其中一個代碼。"
+        }
+      },
+      {
+        "id": "Location.name",
+        "path": "Location.name",
+        "short": "場所名稱",
+        "definition": "這個場所的名稱。",
+        "min": 1
+      },
+      {
+        "id": "Location.position",
+        "path": "Location.position",
+        "short": "絕對的地理位置",
+        "definition": "Location的絕對地理位置，用WGS84座標系統表示（這與KML中使用的座標系統相同）。",
+        "requirements": "為了行動應用程式和自動尋址，需要知道位置的確切位置。",
+        "min": 1
+      },
+      {
+        "id": "Location.position.longitude",
+        "path": "Location.position.longitude",
+        "short": "WGS84座標系統的經度",
+        "definition": "經度。值域和解釋與KML中經度資料項目的文字表述相同(請參閱Notes小節)。"
+      },
+      {
+        "id": "Location.position.latitude",
+        "path": "Location.position.latitude",
+        "short": "WGS84座標系統的緯度",
+        "definition": "緯度。值域和解釋與KML中緯度資料項目的文字表述相同(請參閱Notes小節)。"
+      }
+    ]
+  }
+}
